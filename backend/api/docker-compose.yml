@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  # Serviço "backend" é a aplicação principal da AuthApi
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 9090:9090
+    depends_on:
+      - mysql
+    environment:
+      # Configurações do banco de dados para o serviço backend
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/inventorydb?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: admin123
+    networks:
+      - backend_network
+
+  # Serviço "mysql" é o banco de dados MySQL
+  mysql:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      # Configurações do banco de dados MySQL
+      MYSQL_DATABASE: inventorydb
+      MYSQL_ROOT_PASSWORD: admin123
+    networks:
+      - backend_network
+
+# Definição da rede "backend_network" para comunicação entre os serviços
+networks:
+  backend_network:
