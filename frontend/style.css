@@ -1,10 +1,9 @@
 :root {
-    --main-color: #3498db; /* Cor principal para realces */
-    --color-dark: #333; /* Fundo escuro */
-    --text-grey: #ccc; /* Cor de texto cinza */
-    --hover-color: #555; /* Cor de realce suave ao passar o mouse */
+    --main-color: #007BFF; /* Azul (exemplo) - Você pode substituir por outra cor da sua preferência */
+    --color-dark: #333;
+    --text-grey: #ccc;
+    --hover-color: #555;
 }
-
 * {
     padding: 0;
     margin: 0;
@@ -22,8 +21,8 @@
     left: 0;
     top: 0;
     background: var(--color-dark);
-    color: var(--text-grey); /* Cor de texto cinza para o texto na barra lateral */
-    overflow-y: auto; /* Adicione rolagem vertical quando necessário */
+    color: var(--text-grey);
+    overflow-y: auto;
 }
 
 /* Sidebar Brand */
@@ -35,12 +34,22 @@
 }
 
 .sidebar-brand h1 {
-    color: #fff; /* Cor do texto do título */
+    color: #fff;
+    padding: 1rem 0rem 1rem 2rem;
+    color: #fff;
 }
 
 /* Sidebar Menu Item */
 .sidebar-menu li {
+    width: 100%;
     padding-left: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-menu a{
+    display: block;
+    color: #fff;
+    font-size: 1.1rem;
 }
 
 /* Sidebar Menu Link */
@@ -48,32 +57,123 @@
     display: block;
     color: var(--text-grey);
     font-size: 1.2rem;
-    padding: 1rem 0; /* Espaçamento vertical para cada item */
-    transition: background 0.3s; /* Adicione uma transição suave para o efeito hover */
+    padding: 1rem 0;
+    transition: background 0.3s;
 }
 
 /* Active Link Styling */
 .sidebar-menu a.active {
-    background: var(--main-color); /* Cor de realce para o item ativo */
-    color: #fff; /* Cor do texto para o item ativo */
+    background: var(--main-color);
+    color: #fff;
     border-radius: 30px 0px 0px 30px;
 }
 
 /* Efeito de Cor Suave ao Passar o Mouse */
 .sidebar-menu a:hover {
-    background: var(--hover-color); /* Cor de realce suave ao passar o mouse */
+    background: var(--hover-color);
 }
 
 /* Sidebar Icon */
 .sidebar-menu a span:first-child {
     font-size: 1.5rem;
-    margin-right: 1rem;
+    padding-right: 1rem;
+}
+
+.sidebar-brand span{
+    display: inline-block;
+    padding-right: 1rem;
 }
 
 /* Main Content Margin */
 .main-content {
     margin-left: 345px;
-    background: #f2f2f2; /* Cor de fundo do conteúdo principal */
+    background: #f2f2f2;
     padding: 20px;
-    transition: margin-left 0.5s; /* Adicione uma transição suave à margem */
+    transition: margin-left 0.5s;
+}
+
+/* Search Bar */
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.search-wrapper .las.la-search {
+    font-size: 1.5rem;
+    color: var(--text-grey);
+}
+
+.search-wrapper input[type="search"] {
+    border: none;
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 10px;
+    width: 200px;
+    font-size: 1rem;
+}
+
+/* User Profile */
+.user-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.user-wrapper img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-wrapper h4 {
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.user-wrapper small {
+    color: var(--text-grey);
+    font-size: 1rem;
+}
+
+/* Header Style */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centraliza os itens verticalmente no cabeçalho */
+    padding: 1rem 2rem; /* Adiciona preenchimento interno ao cabeçalho */
+    background: var(--color-dark); /* Define o plano de fundo do cabeçalho */
+    color: #fff; /* Define a cor do texto no cabeçalho */
+}
+
+/* Ajuste o estilo do título */
+.header h2 {
+    font-size: 1.5rem; /* Ajuste o tamanho da fonte conforme necessário */
+}
+
+/* Ajuste o estilo da barra de pesquisa e do perfil do usuário no cabeçalho */
+.header .search-wrapper,
+.header .user-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; /* Adicione margem à esquerda para separar os elementos */
+}
+
+
+/* Adicione um novo ponto de quebra para telas menores, por exemplo, 768px */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Faça a barra lateral ocupar a largura total */
+    }
+
+    .main-content {
+        margin-left: 0; /* Remova a margem esquerda no conteúdo principal */
+    }
+
+    /* Ajuste o posicionamento dos elementos na barra de pesquisa e perfil do usuário */
+    .search-wrapper, .user-wrapper {
+        margin-top: 10px; /* Diminua o espaçamento no topo */
+    }
 }
