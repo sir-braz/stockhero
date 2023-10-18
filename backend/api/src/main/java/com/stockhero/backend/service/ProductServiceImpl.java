@@ -67,18 +67,5 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    @Transactional
-    @Override
-    public Product generateBarcode(Product product) {
-        if (product.getBarcode() == null || product.getBarcode().isEmpty()) {
-            String newBarcode = generateNewBarcode();
-            product.setBarcode(newBarcode);
-            return repository.save(product); // Save the product with the new barcode
-        }
-        return product; // No new barcode generated, return the original product
-    }
 
-    private String generateNewBarcode() {
-        return UUID.randomUUID().toString();
-    }
 }

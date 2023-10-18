@@ -104,9 +104,4 @@ public class ProductController {
         }
     }
 
-    @PostMapping("/generate-barcode")
-    public ResponseEntity<Product> generateBarcode(@RequestBody Product product) {
-        Product productWithBarcode = productService.generateBarcode(product);
-        return ResponseEntity.ok(productWithBarcode);
-    }
 }

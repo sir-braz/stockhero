@@ -14,15 +14,8 @@ public class Product {
     @JoinColumn(name = "category_id")
     private CategoryProduct categoryProduct;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "supplier_id")
-    private Supplier supplier;
-
     @Column(name = "product_name")
     private String productName;
-
-    @Column(name = "barcode")
-    public String barcode;
 
     @Column(name = "price")
     private Double price;
@@ -39,21 +32,6 @@ public class Product {
     @Column(name = "usage_date")
     private String usageDate;
 
-    public Supplier getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
-    }
-
-    public String getBarcode() {
-        return barcode;
-    }
-
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
-    }
 
     public Long getId() {
         return id;

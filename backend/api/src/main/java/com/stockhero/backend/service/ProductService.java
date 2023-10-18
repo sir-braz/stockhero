@@ -15,5 +15,4 @@ public interface ProductService {
 
     Product createProduct(Product product);
 
-    Product generateBarcode(Product product);
 }
