@@ -12,13 +12,14 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://kit.fontawesome.com/65f22fe718.js" crossorigin="anonymous"></script>
-    <!-- Option 1: Include in HTML -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
         function fetchData() {
             // URL da API que você deseja consultar
-            const apiUrl = ' http://localhost:8080/list-products';
+            const apiUrl = 'http://localhost:8080/list-products';
 
             // Fazer a solicitação GET usando Axios
             axios.get(apiUrl)
@@ -32,11 +33,7 @@
                     console.error('Erro ao buscar dados da API:', error);
                 });
         }
-
-
-       
     </script>
-
 </head>
 
 <body>
@@ -104,20 +101,75 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>productName</td>
-                    <td>price</td>
-                    <td>quantity</td>
-                    <td>unitOfMeasure</td>
-                    <td>creationDate</td>
-                    <td>usageDate</td>
-                    <td class="d-flex">
-                        <i class="bi bi-pencil mx-1"></i>
-                        <i class="bi bi-archive mx-1"></i>
-                        <i class="bi bi-download mx-1"></i>
-                    </td>
-                </tr>
+                <script>
+                    function updateTable(products) {
+                        const tbody = document.querySelector('tbody'); // Obtém a referência ao elemento tbody da tabela
+
+                        // Limpa o conteúdo atual da tabela
+                        tbody.innerHTML = '';
+
+                        // Itera sobre os produtos e cria uma linha na tabela para cada produto
+                        products.forEach((product, index) => {
+                            const row = document.createElement('tr'); // Cria uma nova linha (tr)
+
+                            // Cria as células (td) para cada coluna da tabela e define o conteúdo
+                            const idCell = document.createElement('td');
+                            idCell.textContent = product.id;
+
+                            const productNameCell = document.createElement('td');
+                            productNameCell.textContent = product.productName;
+
+                            const priceCell = document.createElement('td');
+                            priceCell.textContent = product.price;
+
+                            const quantityCell = document.createElement('td');
+                            quantityCell.textContent = product.quantity;
+
+                            const unitOfMeasureCell = document.createElement('td');
+                            unitOfMeasureCell.textContent = product.unitOfMeasure;
+
+                            const creationDateCell = document.createElement('td');
+                            creationDateCell.textContent = product.creationDate;
+
+                            const usageDateCell = document.createElement('td');
+                            usageDateCell.textContent = product.usageDate;
+
+                            const actionsCell = document.createElement('td');
+                            actionsCell.classList.add('d-flex');
+
+                            // Adiciona ícones às células de ação
+                            const editIcon = document.createElement('i');
+                            editIcon.classList.add('bi', 'bi-pencil', 'mx-1');
+
+                            const archiveIcon = document.createElement('i');
+                            archiveIcon.classList.add('bi', 'bi-archive', 'mx-1');
+
+                            const downloadIcon = document.createElement('i');
+                            downloadIcon.classList.add('bi', 'bi-download', 'mx-1');
+
+                            // Adiciona ícones de ação à célula de ação
+                            actionsCell.appendChild(editIcon);
+                            actionsCell.appendChild(archiveIcon);
+                            actionsCell.appendChild(downloadIcon);
+
+                            // Adiciona todas as células à linha
+                            row.appendChild(idCell);
+                            row.appendChild(productNameCell);
+                            row.appendChild(priceCell);
+                            row.appendChild(quantityCell);
+                            row.appendChild(unitOfMeasureCell);
+                            row.appendChild(creationDateCell);
+                            row.appendChild(usageDateCell);
+                            row.appendChild(actionsCell);
+
+                            // Adiciona a linha à tabela
+                            tbody.appendChild(row);
+                        });
+                    }
+
+                    fetchData();
+                </script>
+
             </tbody>
         </table>
     </div>
