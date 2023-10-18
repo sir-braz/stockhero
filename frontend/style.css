@@ -161,7 +161,15 @@
 }
 
 .table{
-    margin-top: 80px;
+    margin-top: 30px;
+}
+
+td.bi {
+    margin-right: 1px; /* Define uma margem direita de 10px entre os elementos */
+}
+
+.h2-products{
+    margin-top: 50px;
 }
 
 

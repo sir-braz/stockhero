@@ -7,7 +7,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/65f22fe718.js" crossorigin="anonymous"></script>
+    <!-- Option 1: Include in HTML -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+        function fetchData() {
+        axios.get('URL_DA_SUA_API_AQUI')
+            .then(function (response) {
+                const data = response.data;
+                updateTable(data);
+            })
+            .catch(function (error) {
+                console.error('Erro ao buscar dados da API:', error);
+            });
+    }
+    </script>
+
 </head>
 <body>
     <div class="sidebar">
@@ -56,37 +72,37 @@
                     <input type="search" placeholder="Search...">
                 </div>
             </div>
-
-            
         </header>
 
+        <h2 class="h2-products">Products</h2>
+        
         <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th id="id" scope="col">id</th>
+                <th id="productName" scope="col">productName</th>
+                <th id="price" scope="col">price</th>
+                <th id="quantity" scope="col">quantity</th>
+                <th id="unitOfMeasure" scope="col">unitOfMeasure</th>
+                <th id="creationDate" scope="col">creationDate</th>
+                <th id="usageDate" scope="col">usageDate</th>
+                <th id="actions" scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
+                <td>productName</td>
+                <td>price</td>
+                <td>quantity</td>
+                <td>unitOfMeasure</td>
+                <td>creationDate</td>
+                <td>usageDate</td>
+                <td class="d-flex">
+                    <i class="bi bi-pencil mx-1"></i>
+                    <i class="bi bi-archive mx-1"></i>
+                    <i class="bi bi-download mx-1"></i>
+                </td>     
               </tr>
             </tbody>
           </table>
