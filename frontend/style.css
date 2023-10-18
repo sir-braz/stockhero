@@ -1,0 +1,79 @@
+:root {
+    --main-color: #3498db; /* Cor principal para realces */
+    --color-dark: #333; /* Fundo escuro */
+    --text-grey: #ccc; /* Cor de texto cinza */
+    --hover-color: #555; /* Cor de realce suave ao passar o mouse */
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 345px;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: var(--color-dark);
+    color: var(--text-grey); /* Cor de texto cinza para o texto na barra lateral */
+    overflow-y: auto; /* Adicione rolagem vertical quando necessário */
+}
+
+/* Sidebar Brand */
+.sidebar-brand {
+    height: 90px;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-brand h1 {
+    color: #fff; /* Cor do texto do título */
+}
+
+/* Sidebar Menu Item */
+.sidebar-menu li {
+    padding-left: 2rem;
+}
+
+/* Sidebar Menu Link */
+.sidebar-menu a {
+    display: block;
+    color: var(--text-grey);
+    font-size: 1.2rem;
+    padding: 1rem 0; /* Espaçamento vertical para cada item */
+    transition: background 0.3s; /* Adicione uma transição suave para o efeito hover */
+}
+
+/* Active Link Styling */
+.sidebar-menu a.active {
+    background: var(--main-color); /* Cor de realce para o item ativo */
+    color: #fff; /* Cor do texto para o item ativo */
+    border-radius: 30px 0px 0px 30px;
+}
+
+/* Efeito de Cor Suave ao Passar o Mouse */
+.sidebar-menu a:hover {
+    background: var(--hover-color); /* Cor de realce suave ao passar o mouse */
+}
+
+/* Sidebar Icon */
+.sidebar-menu a span:first-child {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+/* Main Content Margin */
+.main-content {
+    margin-left: 345px;
+    background: #f2f2f2; /* Cor de fundo do conteúdo principal */
+    padding: 20px;
+    transition: margin-left 0.5s; /* Adicione uma transição suave à margem */
+}
