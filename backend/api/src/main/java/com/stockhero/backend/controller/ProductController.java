@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @Service
 public class ProductController {
 
@@ -42,19 +42,11 @@ public class ProductController {
 
     @PostMapping(value = "/save-product")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        Long categoryId = product.getCategoryProduct().getId();
-        Optional<CategoryProduct> categoryOptional = categoryProductService.findById(categoryId);
+        product.setCategoryProduct(null);
 
-        if (categoryOptional.isPresent()) {
-            CategoryProduct categoryProduct = categoryOptional.get();
-            product.setCategoryProduct(categoryProduct);
+        Product newProduct = productService.createProduct(product);
 
-            Product newProduct = productService.createProduct(product);
-
-            return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
-        } else {
-            return ResponseEntity.badRequest().body(null);
-        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
     }
 
     @GetMapping("/list-products")

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3000") // Replace with your frontend origin
+@CrossOrigin(origins = "*") // Replace with your frontend origin
 public class CategoryProductController {
 
     private static final Logger logger = Logger.getLogger(ProductController.class.getName());
@@ -57,7 +57,7 @@ public class CategoryProductController {
         }
     }
 
-    @PutMapping("category/{categoryId}")
+    @PutMapping("/category/{categoryId}")
     public CategoryProduct updateCategory(@PathVariable Long categoryId, @RequestBody CategoryProduct updatedCategory) {
         return categoryProductService.updateCategory(categoryId, updatedCategory);
     }
