@@ -13,7 +13,6 @@ public class CategoryProduct {
     private Long id;
 
     @OneToMany(mappedBy = "categoryProduct", fetch = FetchType.LAZY)
-    @JsonIgnore
     private List<Product> products;
 
     @Column(name = "category_name")

@@ -85,6 +85,16 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/list-products-with-categories")
+    public ResponseEntity<List<Product>> listProductsWithCategories() {
+        List<Product> products = productService.listProducts();
+        for (Product product : products) {
+            product.getCategoryProduct(); // Isso irá carregar a categoria associada ao produto
+        }
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
+
     @DeleteMapping("/product/{productId}")
     public ResponseEntity<String> deleteProduct(@PathVariable Long productId) {
         try {
