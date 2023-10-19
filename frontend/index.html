@@ -45,28 +45,28 @@
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="#" class="active"><span class="las la-igloo"></span> Dashboard</a>
+                    <a href="#/" class="active"><span class="las la-igloo"></span> Dashboard</a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#/customers">
                         <i class="fas fa-users"></i>
                         <span>Customers</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#/products">
                         <i class="fas fa-cubes"></i>
                         <span>Products</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#/orders">
                         <i class="fas fa-file-invoice-dollar"></i>
                         <span>Orders</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#/accounts">
                         <i class="fas fa-user-circle"></i>
                         <span>Accounts</span>
                     </a>
@@ -85,19 +85,12 @@
             </div>
         </header>
 
-        <h2 class="h2-products">Products</h2>
+        <div id="content"> <!-- Conteúdo da página dinâmica será atualizado aqui --></div>
 
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th id="id" scope="col">id</th>
-                    <th id="productName" scope="col">productName</th>
-                    <th id="price" scope="col">price</th>
-                    <th id="quantity" scope="col">quantity</th>
-                    <th id="unitOfMeasure" scope="col">unitOfMeasure</th>
-                    <th id="creationDate" scope="col">creationDate</th>
-                    <th id="usageDate" scope="col">usageDate</th>
-                    <th id="actions" scope="col">Actions</th>
+                    <!-- Cabeçalhos da tabela aqui -->
                 </tr>
             </thead>
             <tbody>
@@ -116,60 +109,17 @@
                             const idCell = document.createElement('td');
                             idCell.textContent = product.id;
 
-                            const productNameCell = document.createElement('td');
-                            productNameCell.textContent = product.productName;
-
-                            const priceCell = document.createElement('td');
-                            priceCell.textContent = product.price;
-
-                            const quantityCell = document.createElement('td');
-                            quantityCell.textContent = product.quantity;
-
-                            const unitOfMeasureCell = document.createElement('td');
-                            unitOfMeasureCell.textContent = product.unitOfMeasure;
-
-                            const creationDateCell = document.createElement('td');
-                            creationDateCell.textContent = product.creationDate;
-
-                            const usageDateCell = document.createElement('td');
-                            usageDateCell.textContent = product.usageDate;
-
-                            const actionsCell = document.createElement('td');
-                            actionsCell.classList.add('d-flex');
-
-                            // Adiciona ícones às células de ação
-                            const editIcon = document.createElement('i');
-                            editIcon.classList.add('bi', 'bi-pencil', 'mx-1');
-
-                            const archiveIcon = document.createElement('i');
-                            archiveIcon.classList.add('bi', 'bi-archive', 'mx-1');
-
-                            const downloadIcon = document.createElement('i');
-                            downloadIcon.classList.add('bi', 'bi-download', 'mx-1');
-
-                            // Adiciona ícones de ação à célula de ação
-                            actionsCell.appendChild(editIcon);
-                            actionsCell.appendChild(archiveIcon);
-                            actionsCell.appendChild(downloadIcon);
+                            // ... (outras células) ...
 
                             // Adiciona todas as células à linha
                             row.appendChild(idCell);
-                            row.appendChild(productNameCell);
-                            row.appendChild(priceCell);
-                            row.appendChild(quantityCell);
-                            row.appendChild(unitOfMeasureCell);
-                            row.appendChild(creationDateCell);
-                            row.appendChild(usageDateCell);
-                            row.appendChild(actionsCell);
+                            // ... (outras células) ...
 
                             // Adiciona a linha à tabela
                             tbody.appendChild(row);
                         });
                     }
 
-                    fetchData();
-                </script>
-                <script>
                     function handleRoute(route) {
                         const contentDiv = document.getElementById('content');
 
@@ -188,15 +138,23 @@
                         }
                     }
 
-                    // Função para navegar para a página de produtos
-                    function navigateToProducts() {
-                        handleRoute('products');
+                    // Função para manipular as alterações de hash
+                    function handleHashChange() {
+                        const hash = window.location.hash;
+                        if (hash) {
+                            const route = hash.substring(2); // Remova o "#" e a barra inicial
+                            handleRoute(route);
+                        } else {
+                            // Se não houver um hash, exiba o conteúdo padrão (dashboard)
+                            handleRoute('');
+                        }
                     }
 
-                    // Função para navegar para a página de clientes
-                    function navigateToCustomers() {
-                        handleRoute('customers');
-                    }
+                    // Registrar um ouvinte de eventos para alterações de hash
+                    window.addEventListener("hashchange", handleHashChange);
+
+                    // Carregar a página inicial com base no hash atual
+                    handleHashChange();
                 </script>
             </tbody>
         </table>
