@@ -169,7 +169,35 @@
 
                     fetchData();
                 </script>
+                <script>
+                    function handleRoute(route) {
+                        const contentDiv = document.getElementById('content');
 
+                        switch (route) {
+                            case 'products':
+                                // Carregar conteúdo da página de produtos
+                                contentDiv.innerHTML = '<h2 class="h2-products">Products Page</h2>';
+                                break;
+                            case 'customers':
+                                // Carregar conteúdo da página de clientes
+                                contentDiv.innerHTML = '<h2>Customers Page</h2>';
+                                break;
+                            default:
+                                // Página de erro 404
+                                contentDiv.innerHTML = '<h2>Error 404: Page Not Found</h2>';
+                        }
+                    }
+
+                    // Função para navegar para a página de produtos
+                    function navigateToProducts() {
+                        handleRoute('products');
+                    }
+
+                    // Função para navegar para a página de clientes
+                    function navigateToCustomers() {
+                        handleRoute('customers');
+                    }
+                </script>
             </tbody>
         </table>
     </div>
